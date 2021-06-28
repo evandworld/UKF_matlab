@@ -4,11 +4,12 @@ function [Sigma_Points, Weights] = calculateSigPntsandWeights(State, P, apha, pr
 nx = size(State,1);
 nx_aug = nx+size(process_noisy,1);
 
-State_aug = [State;0;0;];
+State_aug = [State;0;0;0];
 P_aug = zeros(nx_aug, nx_aug);
 P_aug(1:nx,1:nx) = P;
-P_aug(5,5) = process_noisy(1,1)*process_noisy(1,1);
-P_aug(6,6) = process_noisy(2,1)*process_noisy(2,1);
+P_aug(7,7) = process_noisy(1,1)*process_noisy(1,1);
+P_aug(8,8) = process_noisy(2,1)*process_noisy(2,1);
+P_aug(9,9) = process_noisy(3,1)*process_noisy(3,1);
 
 %% lambda
 lambda = apha*apha*nx_aug-nx_aug;
